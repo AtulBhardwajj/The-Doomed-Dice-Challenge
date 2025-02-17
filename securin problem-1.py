@@ -1,2 +1,13 @@
-Python 3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)] on win32
-Type "help", "copyright", "credits" or "license()" for more information.
+numbers = [1, 2, 3, 4, 5, 6]
+total = len(numbers) ** 2
+print("Total Combinations:", total)
+combos = [(i, j) for i in numbers for j in numbers]
+print("\nCombinations Distribution:")
+for i in range(0, total, len(numbers)):
+    print(combos[i:i + len(numbers)])
+
+print("\nProbability for every Sum :")
+for i in range(2, 13):
+    count = sum(1 for j in combos if sum(j) == i)
+    probability = count / total
+    print(f"P(Sum = {i})  :   {count}/{total} = {probability:.2f}")
